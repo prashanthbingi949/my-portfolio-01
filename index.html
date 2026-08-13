@@ -87,6 +87,7 @@
     .hero .inner{position:relative;min-height:650px}
     .hero-topline{display:flex;align-items:center;justify-content:space-between;gap:20px}
     .hero-heading-group{display:grid;gap:7px}
+    .hero-heading-group .availability{margin-top:1px;width:max-content}
     .hero-description{
       margin:0;
       max-width:650px;
@@ -142,62 +143,213 @@
     }
     .star{position:absolute;color:var(--gold);line-height:1}
     .star-a{left:-23px;top:60px;font-size:3.4rem}.star-b{left:-7px;top:133px;font-size:2rem}.star-c{right:-10px;bottom:20px;font-size:2.6rem}
+
+    /* Premium orbit / sphere hero scene — replaces the code video */
+    .hero-orbit-scene{
+      position:absolute;
+      right:1%;
+      top:88px;
+      width:min(520px,50%);
+      height:430px;
+      z-index:6;
+      pointer-events:none;
+    }
+    .orbit-glow{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:250px;
+      height:250px;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,181,27,.22) 0%, rgba(255,181,27,.08) 32%, rgba(47,75,54,0) 72%);
+      filter:blur(6px);
+    }
+    .orbit-sphere{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:165px;
+      height:165px;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 32% 26%, rgba(255,255,255,.28), transparent 16%),
+        radial-gradient(circle at 40% 34%, #d2ae82 0%, #8e6244 28%, #3c2f24 62%, #171812 100%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.10) inset,
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 60px rgba(255,181,27,.10);
+      overflow:hidden;
+    }
+    .sphere-highlight{
+      position:absolute;
+      inset:-18%;
+      background:radial-gradient(circle at 34% 28%, rgba(255,255,255,.32), transparent 20%, rgba(255,255,255,0) 48%);
+      mix-blend-mode:screen;
+    }
+    .orbit-ring{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:305px;
+      height:150px;
+      transform:translate(-50%,-50%);
+      border:1px solid rgba(255,181,27,.45);
+      border-radius:50%;
+      box-shadow:0 0 22px rgba(255,181,27,.06);
+    }
+    .orbit-ring-a{transform:translate(-50%,-50%) rotate(18deg) scaleY(.56);animation:orbitSpinA 11s linear infinite}
+    .orbit-ring-b{transform:translate(-50%,-50%) rotate(-30deg) scaleY(.58);animation:orbitSpinB 14s linear infinite}
+    .orbit-ring-c{
+      width:350px;
+      height:175px;
+      border-color:rgba(255,255,255,.10);
+      transform:translate(-50%,-50%) rotate(68deg) scaleY(.5);
+      animation:orbitSpinC 17s linear infinite;
+    }
+    .orbit-dot{
+      position:absolute;
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 12px rgba(255,181,27,.55);
+    }
+    .dot-a{left:11%;top:50%;transform:translate(-50%,-50%)}
+    .dot-b{right:11%;top:50%;transform:translate(50%,-50%)}
+    .dot-c{left:50%;bottom:-2px;transform:translate(-50%,50%);background:#fff}
+    .orbit-star{
+      position:absolute;
+      color:var(--gold);
+      line-height:1;
+      text-shadow:0 0 14px rgba(255,181,27,.20);
+    }
+    .star-1{left:8%;top:27%;font-size:1.5rem}
+    .star-2{right:18%;top:18%;font-size:.9rem}
+    .star-3{right:9%;bottom:20%;font-size:1.3rem}
+    .orbit-chip{
+      position:absolute;
+      min-width:126px;
+      padding:11px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:11px;
+      background:rgba(25,39,28,.78);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      backdrop-filter:blur(12px);
+      box-shadow:0 14px 35px rgba(0,0,0,.22);
+      font:700 .54rem/1.35 var(--sans);
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+    .chip-icon{
+      width:31px;
+      height:31px;
+      flex:0 0 31px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:1px solid rgba(255,181,27,.55);
+      color:var(--gold);
+      font-size:.72rem;
+      letter-spacing:0;
+    }
+
+    /* Simple hover glow — no popups, no movement */
+    .orbit-chip{
+      cursor:pointer;
+      outline:none;
+      transition:
+        border-color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease,
+        filter .22s ease;
+    }
+    .orbit-chip:hover,
+    .orbit-chip:focus-visible{
+      border-color:rgba(255,181,27,.72);
+      background:rgba(25,39,28,.94);
+      box-shadow:
+        0 0 0 1px rgba(255,181,27,.26) inset,
+        0 0 18px rgba(255,181,27,.24),
+        0 12px 28px rgba(0,0,0,.22);
+      filter:brightness(1.08);
+    }
+    .orbit-chip:hover .chip-icon,
+    .orbit-chip:focus-visible .chip-icon{
+      border-color:rgba(255,181,27,.95);
+      box-shadow:0 0 12px rgba(255,181,27,.32);
+      background:rgba(255,181,27,.05);
+    }
+    .chip-top{
+      top:8%;
+      left:50%;
+      transform:translateX(-50%);
+    }
+    .chip-right{
+      right:0;
+      top:46%;
+    }
+    .chip-bottom{
+      left:50%;
+      bottom:4%;
+      transform:translateX(-50%);
+    }
+    @keyframes orbitSpinA{
+      from{transform:translate(-50%,-50%) rotate(18deg) scaleY(.56)}
+      to{transform:translate(-50%,-50%) rotate(378deg) scaleY(.56)}
+    }
+    @keyframes orbitSpinB{
+      from{transform:translate(-50%,-50%) rotate(-30deg) scaleY(.58)}
+      to{transform:translate(-50%,-50%) rotate(330deg) scaleY(.58)}
+    }
+    @keyframes orbitSpinC{
+      from{transform:translate(-50%,-50%) rotate(68deg) scaleY(.5)}
+      to{transform:translate(-50%,-50%) rotate(-292deg) scaleY(.5)}
+    }
+
     .hero-mini-card{
-      position:absolute;right:0;bottom:0;width:245px;padding:18px 19px;background:#000;color:var(--white);
+      position:absolute;left:67%;right:auto;bottom:24px;width:255px;padding:18px 19px;background:#000;color:var(--white);
       border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)
     }
-    .hero-mini-card h3{font:800 1.7rem/1 var(--serif);margin:0 0 10px}
+    .hero-mini-card h3{font:800 1.75rem/1 var(--serif);margin:0 0 10px}
     .hero-mini-card p{font-size:.72rem;color:rgba(255,255,255,.68);margin:4px 0}
 
-    /* Uploaded code MP4 — visually transparent blend replacement for the orb */
-    .hero-code-video{
-      position:absolute;
-      right:-1%;
-      top:92px;
-      width:min(470px,49%);
-      aspect-ratio:16/9;
-      z-index:5;
-      overflow:hidden;
-      pointer-events:none;
-      border-radius:18px;
-      isolation:isolate;
-      filter:contrast(1.06) brightness(1.03);
-      -webkit-mask-image:radial-gradient(ellipse at center, #000 62%, rgba(0,0,0,.82) 76%, transparent 100%);
-      mask-image:radial-gradient(ellipse at center, #000 62%, rgba(0,0,0,.82) 76%, transparent 100%);
-    }
-    .code-video{
+    /* Real uploaded code video — replaces the orb */
+.code-video{
       width:100%;
       height:100%;
       display:block;
       object-fit:cover;
-      mix-blend-mode:screen;
-      opacity:.92;
+      opacity:.97;
     }
     .code-video-vignette{
       position:absolute;
       inset:0;
       pointer-events:none;
       background:
-        radial-gradient(circle at 50% 50%, transparent 45%, rgba(47,75,54,.08) 72%, rgba(47,75,54,.8) 100%);
+        radial-gradient(ellipse at center, transparent 54%, rgba(47,75,54,.12) 77%, rgba(47,75,54,.64) 100%);
     }
-
     @media (max-width:980px){
-      .hero-code-video{
-        right:0;
-        top:120px;
-        width:49%;
-        -webkit-mask-image:radial-gradient(ellipse at center, #000 60%, rgba(0,0,0,.82) 77%, transparent 100%);
-        mask-image:radial-gradient(ellipse at center, #000 60%, rgba(0,0,0,.82) 77%, transparent 100%);
+.hero-mini-card{
+        left:65%;
+        right:auto;
+        bottom:18px;
       }
     }
-
     @media (max-width:640px){
-      .hero-code-video{
-        right:1%;
-        top:265px;
-        width:56%;
-        max-width:280px;
-        border-radius:12px;
+.hero-mini-card{
+        left:58%;
+        right:auto;
+        bottom:16px;
+        width:220px;
+      }
+      .hero-heading-group .availability{
+        margin-top:1px;
+        font-size:.58rem;
       }
     }
 
@@ -439,7 +591,7 @@
       .orb-tooltip strong{font-size:.55rem}.orb-tooltip span{font-size:.50rem}
     
       .orange-block{height:235px}.hero-photo{left:28%;top:44px;height:250px;width:64%}
-      .hero-mini-card{display:none}.scroll-orb{width:95px;height:95px;bottom:-47.5px;font-size:.8rem}
+      .scroll-orb{width:95px;height:95px;bottom:-47.5px;font-size:.8rem}
       .about{padding:27px 0}.about h2{font-size:clamp(3.5rem,15vw,6rem)}
       .about-links{flex-direction:column;align-items:flex-start}.profile-date{left:-12px;top:48%;transform:translateY(-50%)}.profile-role{right:-12px;top:58%;bottom:auto;transform:translateY(-50%)}
       .profile-photo,.contact-card{width:76%}
@@ -463,6 +615,453 @@
       .reveal{opacity:1;transform:none}
       .track{animation:none}
     }
+  
+    /* Final mobile hero correction */
+    @media (max-width: 640px){
+      html,body{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        overflow-x:hidden;
+      }
+      .hero{
+        width:100%;
+        max-width:100%;
+        min-height:650px;
+        padding:88px 0 24px;
+        overflow:visible;
+        background:linear-gradient(var(--green) 0 65%,#000 65% 100%);
+      }
+      .hero .inner{
+        width:100%;
+        max-width:100%;
+        min-height:560px;
+        padding:0 18px;
+        margin:0;
+      }
+      .hero-topline{
+        position:relative;
+        z-index:12;
+        display:block;
+      }
+      .hero-heading-group{
+        gap:5px;
+        width:100%;
+        max-width:100%;
+      }
+      .hero-description{
+        max-width:310px;
+        font-size:.60rem;
+        line-height:1.35;
+      }
+      .hero-topline .availability{
+        display:inline-flex;
+        margin-top:4px;
+        font-size:.58rem;
+      }
+
+      /* Photo/art stays to the left and remains fully inside the viewport. */
+      .hero-art{
+        left:4%;
+        top:150px;
+        width:54%;
+        max-width:220px;
+        height:300px;
+        z-index:3;
+      }
+      .orange-block{
+        left:0;
+        top:22px;
+        width:78%;
+        height:214px;
+      }
+      .hero-photo{
+        left:22%;
+        top:48px;
+        width:74%;
+        height:238px;
+      }
+      .person-mock{
+        left:51%;
+        bottom:-10px;
+        width:76%;
+        height:94%;
+      }
+      .person-mock::after{
+        font-size:.72rem;
+        letter-spacing:.08em;
+      }
+      .star-a{left:-10px;top:42px;font-size:2.2rem}
+      .star-b{left:2px;top:102px;font-size:1.25rem}
+      .star-c{display:none}
+
+      /* Code video: larger presence, but fully contained inside the right side. */
+/* Profile card: right side, away from corners, with no horizontal overflow. */
+      .hero-mini-card{
+        left:auto !important;
+        right:5% !important;
+        bottom:18px !important;
+        width:min(225px,54vw);
+        max-width:225px;
+        padding:15px 16px;
+        z-index:9;
+      }
+      .hero-mini-card::before{
+        text-align:right;
+        padding-right:2px;
+        margin-bottom:8px;
+        font-size:.78rem;
+      }
+      .hero-mini-card h3{
+        font-size:1.35rem;
+        margin-bottom:8px;
+      }
+      .hero-mini-card p{
+        font-size:.62rem;
+        line-height:1.35;
+      }
+
+      /* Keep the scroll orb centered without affecting document width. */
+      .scroll-orb{
+        left:50%;
+        bottom:-47px;
+        width:94px;
+        height:94px;
+        font-size:.78rem;
+        z-index:100;
+      }
+    }
+
+    @media (max-width:380px){
+      .hero-art{width:52%;max-width:200px}
+.hero-mini-card{right:3% !important;width:min(210px,56vw);padding:13px 14px}
+      .hero-mini-card h3{font-size:1.2rem}
+    }
+
+  
+/* =========================================================
+   FINAL MOBILE RESPONSIVE PASS — ALL SECTIONS
+   ========================================================= */
+@media (max-width:640px){
+  html,body{width:100%;max-width:100%;min-width:0;overflow-x:hidden}
+  body{font-size:15px}
+  .cursor-aura{display:none}
+
+  .site-header{width:100%;height:66px;padding:0 16px}
+  .brand{gap:7px;min-width:0}
+  .brand-mark{font-size:1.15rem}
+  .brand-name{font-size:.92rem;white-space:nowrap}
+  .menu-btn{display:block;width:42px;height:42px;padding:9px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.08)}
+  .menu-btn span{width:22px;height:2px;margin:4px auto}
+  .nav{position:absolute;left:12px;right:12px;top:62px;width:auto;max-width:none;padding:8px;display:grid;gap:2px;background:rgba(31,49,37,.98);border:1px solid rgba(255,255,255,.12);border-radius:16px;opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;box-shadow:0 18px 45px rgba(0,0,0,.32)}
+  .nav.open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .nav a{padding:12px 13px;border-radius:10px;opacity:1;font-size:.82rem}
+  .nav a:hover,.nav a.is-active{background:rgba(255,255,255,.07)}
+  .nav .nav-cta{margin-top:4px;text-align:center;color:var(--ink)}
+
+  .inner{width:calc(100% - 32px);max-width:none;margin-inline:auto}
+  .section{width:100%;max-width:100%;overflow:hidden}
+
+  /* HERO */
+  .hero{min-height:650px;width:100%;max-width:100%;padding:88px 0 24px;overflow:visible;background:linear-gradient(var(--green) 0 64%,#000 64% 100%)}
+  .hero .inner{width:calc(100% - 32px);min-height:560px;padding:0;margin-inline:auto}
+  .hero-topline{display:block;position:relative;z-index:20}
+  .hero-heading-group{width:100%;max-width:100%;display:grid;gap:6px}
+  .eyebrow{font-size:.62rem;letter-spacing:.12em}
+  .hero-description{max-width:310px;font-size:.62rem;line-height:1.38}
+  .hero-topline .availability{display:inline-flex;margin-top:10px;font-size:.60rem}
+  .hero-copy{display:none}
+  .hero-art{left:0;top:154px;width:54%;max-width:225px;height:294px;z-index:3}
+  .orange-block{left:0;top:20px;width:78%;height:208px}
+  .hero-photo{left:23%;top:46px;width:74%;height:238px}
+  .person-mock{left:51%;bottom:-10px;width:76%;height:94%}
+  .person-mock::after{font-size:.70rem;letter-spacing:.07em}
+  .star-a{left:-9px;top:40px;font-size:2.15rem}
+  .star-b{left:1px;top:101px;font-size:1.25rem}
+  .star-c{display:none}
+.hero-mini-card{left:auto !important;right:2% !important;bottom:16px !important;width:min(220px,53vw);max-width:220px;padding:15px 16px;z-index:10}
+  .hero-mini-card::before{text-align:right;padding-right:1px;margin-bottom:8px;font-size:.76rem}
+  .hero-mini-card h3{font-size:1.30rem;line-height:1.02;margin-bottom:8px}
+  .hero-mini-card p{font-size:.60rem;line-height:1.35}
+  .scroll-orb{left:50%;bottom:-47px;width:94px;height:94px;font-size:.76rem;z-index:100}
+
+  /* ABOUT */
+  .about{padding:27px 0}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:30px}
+  .about-copy{min-width:0}
+  .about h2{font-size:clamp(3rem,14vw,4.7rem);line-height:.9;margin:10px 0 18px;overflow-wrap:anywhere}
+  .about-copy .lead{font-size:1rem;line-height:1.5}
+  .about-copy p{font-size:.86rem;line-height:1.6;max-width:none}
+  .about-links{margin-top:20px;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+  .profile-wrap{width:100%}
+  .profile{width:100%;max-width:390px;margin-inline:auto;padding-top:40px}
+  .profile-photo{width:74%;max-width:275px;margin-inline:auto}
+  .profile-date,.profile-role{padding:10px 15px;font-size:.65rem}
+  .profile-date{left:-4px;top:46%}
+  .profile-role{right:-4px;top:58%}
+  .contact-card{width:74%;max-width:275px;margin:-1px auto 0;padding:20px 18px}
+  .contact-card h3{font-size:2rem;margin-bottom:10px}
+  .contact-card p{font-size:.67rem}
+
+  /* MARQUEE */
+  .marquee{width:100%;max-width:100%}
+  .track{animation-duration:20s}
+  .track span{padding:11px 18px;font-size:.84rem}
+
+  /* WORK */
+  .work{padding:27px 0}
+  .work-head{display:block;margin-bottom:24px}
+  .work h2{font-size:clamp(3rem,13vw,4.6rem);line-height:.92;margin-top:8px;overflow-wrap:anywhere}
+  .work-intro{max-width:none;margin-top:14px;font-size:.82rem;line-height:1.55}
+  .projects{display:grid;grid-template-columns:1fr;gap:16px}
+  .project,.project:nth-child(2),.project:nth-child(3),.project:nth-child(4){grid-column:1;width:100%;min-width:0;padding:0}
+  .project-visual{aspect-ratio:1.12}
+  .browser{left:10%;top:13%;width:80%;height:72%}
+  .mock-title{font-size:1.25rem}
+  .mock-layout{padding:12px;gap:8px}
+  .project-tag{top:11px;left:11px;font-size:.58rem}
+  .project-no{right:11px;bottom:10px}
+  .project-info{padding:15px 15px 17px}
+  .project-info h3{font-size:1.42rem}
+  .project-info p{font-size:.67rem}
+
+  /* PROCESS */
+  .process{padding:27px 0}
+  .process-head{display:block;margin-bottom:24px}
+  .process h2{font-size:clamp(3rem,13vw,4.7rem);line-height:.92;margin-top:8px;overflow-wrap:anywhere}
+  .process-head > div + p{max-width:none !important;margin-top:14px;font-size:.82rem;line-height:1.55}
+  .process-grid{display:grid;grid-template-columns:1fr;border-top:1px solid rgba(255,255,255,.18)}
+  .process-card,.process-card:nth-child(2),.process-card:nth-child(3),.process-card:nth-child(4){width:100%;min-width:0;margin:0;padding:20px 0 22px;border-right:0;border-top:1px solid rgba(255,255,255,.18)}
+  .process-card:first-child{border-top:0}
+  .process-number{font-size:1rem}
+  .process-card h3{font-size:1.4rem;margin:13px 0 7px}
+  .process-card p{max-width:none;font-size:.78rem;line-height:1.5;margin:0}
+
+  /* SERVICES */
+  .services{padding:27px 0}
+  .services > .inner > .reveal h2{font-size:clamp(3rem,13vw,4.7rem) !important;line-height:.92;margin-top:8px !important}
+  .service-list{margin-top:24px}
+  .service-row{grid-template-columns:35px minmax(0,1fr) 22px;gap:10px;padding:17px 0;min-width:0}
+  .service-row .num{font-size:.92rem}
+  .service-row h3{font-size:1.38rem;line-height:1.05;overflow-wrap:anywhere}
+  .service-row p{font-size:.68rem;line-height:1.45;margin-top:5px}
+  .service-row .arrow{font-size:1.1rem}
+
+  /* RESUME */
+  .resume{padding:27px 0}
+  .resume-grid{display:grid;grid-template-columns:1fr;gap:38px}
+  .resume h2{font-size:clamp(3rem,13vw,4.7rem);line-height:.92;margin:8px 0 20px}
+  .timeline{width:100%;min-width:0}
+  .timeline-item{grid-template-columns:88px minmax(0,1fr);gap:11px;padding-bottom:24px}
+  .timeline-year{padding-left:23px;font-size:.88rem}
+  .timeline-item h3{font-size:.92rem;line-height:1.25}
+  .timeline-item p,.timeline-item small{font-size:.66rem;line-height:1.4}
+  .resume-card{margin-top:10px;padding:21px 17px}
+  .resume-card h3{font-size:2.25rem;margin-bottom:18px}
+  .tag-row{gap:7px;margin-top:16px}
+  .tag{padding:7px 10px;font-size:.60rem}
+  .skills-cols{grid-template-columns:1fr;gap:26px}
+  .skills-cols h3{font-size:1.45rem}
+  .skill-list{font-size:.78rem}
+  .languages,.hobbies{margin-top:38px}
+  .languages h3,.hobbies h3{font-size:2.55rem;line-height:.92;margin-bottom:18px}
+  .language-grid{grid-template-columns:1fr 1fr;gap:16px 12px}
+  .language-grid strong{font-size:1rem}
+  .language-grid span{font-size:.68rem}
+  .hobby-grid{grid-template-columns:repeat(2,1fr);gap:15px 10px}
+  .hobby-grid i{width:40px;height:40px;margin-bottom:6px}
+  .hobby-grid span{font-size:.64rem}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:27px 0}
+  .quote-card{padding:26px 20px}
+  .quote-mark{font-size:4rem}
+  .quote-text{font-size:1.55rem;line-height:1.1;margin:6px 0 22px}
+  .quote-meta{flex-direction:column;align-items:flex-start;gap:15px}
+  .quote-person{font-size:.68rem;line-height:1.45}
+  .slider-controls{align-self:stretch;justify-content:flex-start}
+
+  /* CONTACT */
+  .contact{padding:27px 0}
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:28px}
+  .contact h2{font-size:clamp(3rem,13vw,4.8rem);line-height:.9;margin:8px 0 16px;overflow-wrap:anywhere}
+  .contact-lead{max-width:none;font-size:.82rem;line-height:1.55}
+  .contact-links{margin-top:20px;gap:8px}
+  .contact-links a{padding:9px 11px;font-size:.66rem}
+  .contact-form{width:100%;gap:12px}
+  .contact-form label{gap:6px;font-size:.65rem}
+  .contact-form input,.contact-form textarea{width:100%;min-width:0;max-width:100%;font-size:.78rem;padding:12px}
+  .contact-form textarea{min-height:125px}
+  .contact-form .btn{width:100%}
+  .form-note{font-size:.60rem;line-height:1.45}
+
+  /* FOOTER */
+  footer{padding:22px 0;width:100%;max-width:100%}
+  .footer-row{display:grid;gap:12px;align-items:start}
+  .footer-links{flex-wrap:wrap;gap:11px 15px;font-size:.67rem}
+
+  /* MODAL */
+  .modal{padding:12px}
+  .modal-card{width:100%;max-width:100%;max-height:92vh}
+  .modal-media{min-height:200px}
+  .modal-body{padding:20px 18px 24px}
+  .modal-body h2{font-size:2rem}
+  .modal-body p{font-size:.82rem}
+}
+
+@media (max-width:380px){
+  .inner,.hero .inner{width:calc(100% - 24px)}
+  .site-header{padding:0 12px}
+  .brand-name{font-size:.84rem}
+  .hero-art{left:0;width:53%;max-width:202px}
+.hero-mini-card{right:1% !important;width:min(205px,55vw)}
+  .about h2,.work h2,.process h2,.resume h2,.contact h2{font-size:clamp(2.7rem,13.5vw,4.3rem)}
+  .service-row{grid-template-columns:30px minmax(0,1fr) 20px}
+  .service-row h3{font-size:1.22rem}
+}
+
+  
+    /* Step 30: orbit positioning + mobile refinement */
+    .hero-topline{
+      position:relative !important;
+      z-index:50 !important;
+    }
+    .availability{
+      position:relative !important;
+      z-index:60 !important;
+      white-space:nowrap !important;
+    }
+
+    @media (min-width:981px){
+      .hero-orbit-scene{
+        right:8% !important;
+        top:128px !important;
+        width:min(500px,47%) !important;
+        height:405px !important;
+      }
+      .orbit-sphere{
+        width:158px !important;
+        height:158px !important;
+      }
+    }
+
+    @media (min-width:641px) and (max-width:980px){
+      .hero-orbit-scene{
+        right:5% !important;
+        top:145px !important;
+        width:48% !important;
+        height:370px !important;
+      }
+      .orbit-sphere{
+        width:138px !important;
+        height:138px !important;
+      }
+    }
+
+    @media (max-width:640px){
+      .hero-topline .availability{
+        margin-top:12px !important;
+      }
+      .hero-orbit-scene{
+        right:0 !important;
+        top:238px !important;
+        width:44% !important;
+        max-width:185px !important;
+        height:205px !important;
+      }
+      .orbit-sphere{
+        width:76px !important;
+        height:76px !important;
+      }
+      .orbit-glow{
+        width:126px !important;
+        height:126px !important;
+      }
+      .orbit-ring{
+        width:142px !important;
+        height:70px !important;
+      }
+      .orbit-ring-c{
+        width:166px !important;
+        height:83px !important;
+      }
+      .orbit-dot{
+        width:6px !important;
+        height:6px !important;
+      }
+      .orbit-chip{
+        min-width:72px !important;
+        padding:6px !important;
+        gap:5px !important;
+        font-size:.33rem !important;
+        letter-spacing:.06em !important;
+      }
+      .chip-icon{
+        width:18px !important;
+        height:18px !important;
+        flex-basis:18px !important;
+        font-size:.44rem !important;
+      }
+      .chip-top{
+        top:0 !important;
+      }
+      .chip-right{
+        right:-4% !important;
+        top:42% !important;
+      }
+      .chip-bottom{
+        bottom:-2% !important;
+      }
+      .orbit-star.star-1{
+        left:0 !important;
+        top:20% !important;
+        font-size:.85rem !important;
+      }
+      .orbit-star.star-2{
+        right:14% !important;
+        top:10% !important;
+        font-size:.56rem !important;
+      }
+      .orbit-star.star-3{
+        right:0 !important;
+        bottom:16% !important;
+        font-size:.72rem !important;
+      }
+    }
+
+    @media (max-width:380px){
+      .hero-orbit-scene{
+        right:0 !important;
+        top:244px !important;
+        width:43% !important;
+        max-width:165px !important;
+        height:185px !important;
+      }
+      .orbit-sphere{
+        width:68px !important;
+        height:68px !important;
+      }
+      .orbit-ring{
+        width:128px !important;
+        height:64px !important;
+      }
+      .orbit-ring-c{
+        width:150px !important;
+        height:75px !important;
+      }
+      .orbit-chip{
+        min-width:66px !important;
+        font-size:.30rem !important;
+        padding:5px !important;
+      }
+      .chip-icon{
+        width:17px !important;
+        height:17px !important;
+        flex-basis:17px !important;
+        font-size:.40rem !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -513,18 +1112,48 @@
           <span class="star star-b">✦</span>
           <span class="star star-c">✦</span>
         </div>
+</div>
 
-        
-        <div class="hero-code-video" aria-label="Animated code editor">
-          <video class="code-video"
-                 autoplay
-                 muted
-                 loop
-                 playsinline
-                 preload="auto" poster="assets/code-frame.jpg">
-            <source src="assets/code.mp4" type="video/mp4">
-          </video>
-          <div class="code-video-vignette" aria-hidden="true"></div>
+
+        <div class="hero-orbit-scene" aria-label="Creative web design and development highlights">
+          <div class="orbit-glow"></div>
+          <div class="orbit-sphere">
+            <div class="sphere-highlight"></div>
+          </div>
+
+          <div class="orbit-ring orbit-ring-a">
+            <span class="orbit-dot dot-a"></span>
+          </div>
+          <div class="orbit-ring orbit-ring-b">
+            <span class="orbit-dot dot-b"></span>
+          </div>
+          <div class="orbit-ring orbit-ring-c">
+            <span class="orbit-dot dot-c"></span>
+          </div>
+
+          <div class="orbit-star star-1">✦</div>
+          <div class="orbit-star star-2">✦</div>
+          <div class="orbit-star star-3">✦</div>
+
+          <div class="orbit-chip chip-top">
+            <span class="chip-icon">◩</span>
+            <span>UI / UX<br>DESIGN</span>
+          </div>
+          <div class="orbit-chip chip-right">
+            <span class="chip-icon">&lt;/&gt;</span>
+            <span>CLEAN<br>CODE</span>
+          </div>
+          <div class="orbit-chip chip-bottom">
+            <span class="chip-icon">▣</span>
+            <span>CREATIVE<br>SOLUTIONS</span>
+          </div>
+        </div>
+
+        <div class="hero-mini-card">
+          <h3>Sai Prashanth Bingi</h3>
+          <p>Creative Web Designer</p>
+          <p>Based in Hyderabad, India</p>
+          <p>Building bold digital experiences.</p>
         </div>
 
       </div>
