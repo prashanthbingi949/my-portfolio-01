@@ -1767,11 +1767,14 @@ html[data-theme="light"] .orbit-info-panel{
       .hero-topline .availability{
         margin-top:12px !important;
       }
+
+      /* Keep all three service chips inside the mobile viewport,
+         while giving them slightly different horizontal positions. */
       .hero-orbit-scene{
-        right:0 !important;
+        right:1% !important;
         top:238px !important;
-        width:44% !important;
-        max-width:185px !important;
+        width:43% !important;
+        max-width:190px !important;
         height:205px !important;
       }
       .orbit-sphere{
@@ -1796,6 +1799,7 @@ html[data-theme="light"] .orbit-info-panel{
       }
       .orbit-chip{
         min-width:72px !important;
+        max-width:104px !important;
         padding:6px !important;
         gap:5px !important;
         font-size:.33rem !important;
@@ -1807,16 +1811,21 @@ html[data-theme="light"] .orbit-info-panel{
         flex-basis:18px !important;
         font-size:.44rem !important;
       }
+
+      /* Deliberately staggered instead of lining up vertically. */
       .chip-top{
         top:0 !important;
+        left:18% !important;
       }
       .chip-right{
-        right:-4% !important;
-        top:42% !important;
+        right:2% !important;
+        top:43% !important;
       }
       .chip-bottom{
-        bottom:-2% !important;
+        bottom:2% !important;
+        left:22% !important;
       }
+
       .orbit-star.star-1{
         left:0 !important;
         top:20% !important;
@@ -1838,8 +1847,8 @@ html[data-theme="light"] .orbit-info-panel{
       .hero-orbit-scene{
         right:0 !important;
         top:244px !important;
-        width:43% !important;
-        max-width:165px !important;
+        width:46% !important;
+        max-width:175px !important;
         height:185px !important;
       }
       .orbit-sphere{
@@ -1856,6 +1865,7 @@ html[data-theme="light"] .orbit-info-panel{
       }
       .orbit-chip{
         min-width:66px !important;
+        max-width:96px !important;
         font-size:.30rem !important;
         padding:5px !important;
       }
@@ -1865,6 +1875,9 @@ html[data-theme="light"] .orbit-info-panel{
         flex-basis:17px !important;
         font-size:.40rem !important;
       }
+      .chip-top{top:1% !important;left:18% !important;}
+      .chip-right{right:2% !important;top:42% !important;}
+      .chip-bottom{bottom:2% !important;left:22% !important;}
     }
 
   
